@@ -232,9 +232,12 @@ body {
 
 .floating-emoji {
   position: absolute;
-  font-size: 1.5rem;
   animation: float 5s infinite ease-in-out;
   opacity: 0.7;
+}
+.floating-emoji img{
+  width: 30px;
+  aspect-ratio: 1/1;
 }
 
 @keyframes bounce {
