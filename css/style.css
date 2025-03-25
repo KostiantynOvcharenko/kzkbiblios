@@ -29,6 +29,7 @@ body {
   width: 100%;
   max-width: 63.625rem;
   margin-inline: auto;
+  padding-inline: 0.625rem;
 }
 .header{
   background: url(/img/head.jpg) 100% 100% no-repeat;
@@ -103,6 +104,10 @@ body {
   box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.2);
 }
 .header__item{
+  width: 100%;
+  height: 100%;
+}
+.header__link{
   flex-grow: 1;
   padding: 0.625rem;
   color: #000;
@@ -116,10 +121,10 @@ body {
   height: 100%;
   transition: background-color 0.3s;
 }
-.header__item.active{
+.header__link.active{
   background-color: rgb(255, 222, 95);
 }
-.header__item:hover{
+.header__link:hover{
   background-color: rgb(30, 232, 23);
 }
 .header__link{
