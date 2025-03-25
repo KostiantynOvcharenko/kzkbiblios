@@ -4,7 +4,8 @@
   padding: 0;
   margin: 0;
   border: none;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 *::before,
@@ -69,11 +70,11 @@ input[type=email],
 input[type=tel],
 textarea {
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 table {
   inline-size: 100%;
   border-collapse: collapse;
-}/*# sourceMappingURL=reset.css.map */
+}

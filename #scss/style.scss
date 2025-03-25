@@ -1,15 +1,18 @@
-@charset "UTF-8";
+@use "sass:math";
+@use "sass:meta";
+// @charset "UTF-8";
 /* Скидання стилів */
 @import url("reset.css");
 @import url(https://fonts.googleapis.com/css?family=Comic+Neue:300,300italic,regular,italic,700,700italic);
+@import "_mixins.scss";
 /* Основні стилі */
 body {
   line-height: 1.5;
   font-size: 0.875rem;
   /* font-family: "Comic Neue", sans-serif; */
-  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
-}
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive, sans-serif;
 
+}
 @media (min-width: 48em) and (max-width: 101.87375em) {
   body {
     font-size: 1rem;
@@ -20,33 +23,28 @@ body {
     font-size: 1.125rem;
   }
 }
-.wrapper {
+.wrapper{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-
-[class*=__container] {
+[class*=__container]{
   width: 100%;
   max-width: 63.625rem;
   margin-inline: auto;
   padding-inline: 0.625rem;
 }
-
-.header {
+.header{
   position: relative;
 }
-
-.header__img {
+.header__img{
   position: absolute;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: -1;
 }
-
-.header__content {
+.header__content{
   padding-block: 0.625rem;
   display: flex;
   flex-wrap: wrap;
@@ -55,32 +53,28 @@ body {
   align-items: center;
   padding-bottom: 1.25rem;
 }
-
-.header__logo {
+.header__logo{
   width: 30%; /* 308/1018 */
 }
-
-.header__name {
+.header__name{
   flex-grow: 1;
   flex-shrink: 1;
   width: 68%;
   display: flex;
   justify-content: center;
 }
-
-.header__name img {
+.header__name img{
   max-width: 100%;
 }
-
 @media (max-width: 47.9988em) {
-  .header__logo {
+  .header__logo{
     width: inherit; /* 308/1018 */
   }
-  .header__name {
+  .header__name{
     width: 100%;
   }
 }
-.header__footer {
+.header__footer{
   color: #fff;
   background: rgba(237, 21, 102, 0.75);
   font-size: 2rem;
@@ -89,14 +83,13 @@ body {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-}
 
-.header__footer p {
+}
+.header__footer p{
   display: inline-block;
   padding-left: 100%;
-  animation: marquee 15s linear infinite;
+  animation: marquee 15s linear infinite;  
 }
-
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -105,12 +98,11 @@ body {
     transform: translateX(-100%);
   }
 }
-.header__menu {
+.header__menu{
   width: 100%;
   padding-block: 0.625rem;
 }
-
-.header__list {
+.header__list{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -119,15 +111,15 @@ body {
   overflow: hidden;
   box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.2);
 }
-
-.header__item {
+.header__item{
   width: 100%;
   height: 100%;
 }
-
-.header__link {
+.header__link{
   flex-grow: 1;
+  // padding: 10px;
   color: #000;
+  // font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
@@ -136,70 +128,21 @@ body {
   width: 100%;
   height: 100%;
   transition: background-color 0.5s;
+  // Застосування адаптивної властивості
+  @include adaptiveValue("font-size", 20, 10);
+  @include adaptiveValue("padding", 10, 5);
 }
-@media (min-width: 75em) {
-  .header__link {
-    font-size: 1.25rem;
+@media (max-width: 74.9988em){
+}
+@media (max-width: 991.98px) {
+  .header__link{
+    @include adaptiveValue("font-size", 16, 10);
+    @include adaptiveValue("padding", 5, 5);
   }
-}
-@media (min-width: 20em) and (max-width: 75em) {
-  .header__link {
-    font-size: clamp( 0.625rem , 0.3977272727rem  +  1.1363636364vw , 1.25rem );
-  }
-}
-@media (max-width: 20em) {
-  .header__link {
-    font-size: 0.625rem;
-  }
-}
-@media (min-width: 75em) {
-  .header__link {
-    padding: 0.625rem;
-  }
-}
-@media (min-width: 20em) and (max-width: 75em) {
-  .header__link {
-    padding: clamp( 0.3125rem , 0.1988636364rem  +  0.5681818182vw , 0.625rem );
-  }
-}
-@media (max-width: 20em) {
-  .header__link {
-    padding: 0.3125rem;
-  }
-}
 
-@media (max-width: 991.98px) and (min-width: 75em) {
-  .header__link {
-    font-size: 1rem;
-  }
-}
-@media (max-width: 991.98px) and (min-width: 20em) and (max-width: 75em) {
-  .header__link {
-    font-size: clamp( 0.625rem , 0.4886363636rem  +  0.6818181818vw , 1rem );
-  }
-}
-@media (max-width: 991.98px) and (max-width: 20em) {
-  .header__link {
-    font-size: 0.625rem;
-  }
-}
-@media (max-width: 991.98px) and (min-width: 75em) {
-  .header__link {
-    padding: 0.3125rem;
-  }
-}
-@media (max-width: 991.98px) and (min-width: 20em) and (max-width: 75em) {
-  .header__link {
-    padding: clamp( 0.3125rem , 0.3125rem  +  0vw , 0.3125rem );
-  }
-}
-@media (max-width: 991.98px) and (max-width: 20em) {
-  .header__link {
-    padding: 0.3125rem;
-  }
 }
 @media (max-width: 767.98px) {
-  .header__menu {
+  .header__menu{
     position: absolute;
     top: 0;
     right: 0;
@@ -210,49 +153,51 @@ body {
     align-items: center;
     justify-content: center;
   }
-  .header__list {
+  .header__list{
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .header__item {
+  .header__item{
     width: 100%;
     height: auto;
     border-bottom: 1px solid #000;
   }
-  .header__item:not(:last-child) {
+  .header__item:not(:last-child){
     border-right: none;
   }
+  
 }
-.header__link.active {
+@media (max-width: 479.98px) {}
+.header__link.active{
   background-color: rgb(255, 222, 95);
 }
-
-.header__link:hover {
+.header__link:hover{
   background-color: rgb(30, 232, 23);
 }
-
-.header__item:not(:last-child) {
+.header__link{
+}
+.header__item:not(:last-child){
   text-align: center;
 }
-
-.header__item:not(:last-child) {
+.header__item:not(:last-child){
   border-right: 1px solid #000;
 }
 
-.main {
+.main{
   flex-grow: 1;
   padding-block: 1.25rem;
   background-color: rgb(158, 217, 111);
   /* background-color: rgb(159, 250, 84); */
   /* background-color: rgb(255, 222, 95); */
 }
-
-.footer {
+.footer{
   min-height: 3.125rem;
   background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+
   /* background-color: rgb(0, 255, 47); */
 }
+
 
 .footer {
   background: linear-gradient(45deg, #fc4f55 0%, #ff9a9e 99%, #ff9a9e 100%);
@@ -335,78 +280,34 @@ body {
   animation: float 5s infinite ease-in-out;
   opacity: 0.7;
 }
-
-.floating-emoji img {
+.floating-emoji img{
   width: 30px;
   aspect-ratio: 1/1;
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-1.25rem);
-  }
-  60% {
-    transform: translateY(-0.625rem);
-  }
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-1.25rem);}
+  60% {transform: translateY(-0.625rem);}
 }
+
 @keyframes float {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-1.25rem) rotate(180deg);
-  }
-  100% {
-    transform: translateY(0) rotate(360deg);
-  }
+  0% {transform: translateY(0) rotate(0deg);}
+  50% {transform: translateY(-1.25rem) rotate(180deg);}
+  100% {transform: translateY(0) rotate(360deg);}
 }
+
 @keyframes colorChange {
-  0% {
-    color: white;
-  }
-  25% {
-    color: #ffecf1;
-  }
-  50% {
-    color: #ffe0e9;
-  }
-  75% {
-    color: #ffd6e2;
-  }
-  100% {
-    color: white;
-  }
+  0% {color: white;}
+  25% {color: #ffecf1;}
+  50% {color: #ffe0e9;}
+  75% {color: #ffd6e2;}
+  100% {color: white;}
 }
+
 /* Додамо плаваючі емодзі */
-.emoji-1 {
-  top: 10%;
-  left: 5%;
-  animation-delay: 0s;
-}
-
-.emoji-2 {
-  top: 30%;
-  right: 10%;
-  animation-delay: 1s;
-}
-
-.emoji-3 {
-  bottom: 20%;
-  left: 15%;
-  animation-delay: 2s;
-}
-
-.emoji-4 {
-  bottom: 40%;
-  right: 20%;
-  animation-delay: 3s;
-}
-
-.emoji-5 {
-  top: 60%;
-  left: 25%;
-  animation-delay: 4s;
-}/*# sourceMappingURL=style.css.map */
+.emoji-1 {top: 10%; left: 5%; animation-delay: 0s;}
+.emoji-2 {top: 30%; right: 10%; animation-delay: 1s;}
+.emoji-3 {bottom: 20%; left: 15%; animation-delay: 2s;}
+.emoji-4 {bottom: 40%; right: 20%; animation-delay: 3s;}
+.emoji-5 {top: 60%; left: 25%; animation-delay: 4s;}
