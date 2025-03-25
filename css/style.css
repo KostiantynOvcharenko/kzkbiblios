@@ -1,11 +1,14 @@
 @charset "UTF-8";
 /* Скидання стилів */
 @import url("reset.css");
+/* @import url(https://fonts.googleapis.com/css?family=Comic+Neue:300,300italic,regular,italic,700,700italic); */
 /* Основні стилі */
 body {
   line-height: 1.5;
   font-size: 0.875rem;
-  font-family: "Manrope", sans-serif;
+  /* font-family: "Comic Neue", sans-serif; */
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+
 }
 @media (min-width: 48em) and (max-width: 101.87375em) {
   body {
@@ -17,18 +20,195 @@ body {
     font-size: 1.125rem;
   }
 }
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+[class*=__container]{
+  width: 100%;
+  max-width: 63.625rem;
+  margin-inline: auto;
+}
 .header{
   background: url(/img/head.jpg);
+  padding-block: 3.125rem
 }
-.header__container{
+.header__content{
+  padding-inline: 0.625rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 0.625rem;
   align-items: center;
+  padding-bottom: 1.25rem;
 }
 .header__logo{
-  max-width: 45%;
+  width: 30%; /* 308/1018 */
 }
 .header__name{
-  max-width: 50%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 68%;
+  display: flex;
+  justify-content: center;
 }
+.header__name img{
+  max-width: 100%;
+}
+@media (max-width: 47.9988rem) {
+  .header__logo{
+    width: inherit; /* 308/1018 */
+  }
+  .header__name{
+    width: 100%;
+  }
+}
+.header__footer{
+  color: #fff;
+  background: rgba(237, 21, 102, 0.75);
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: italic;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+
+}
+.header__footer p{
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 15s linear infinite;  
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.main{
+  flex-grow: 1;
+  padding-block: 1.25rem;
+  background-color: rgb(158, 217, 111);
+  /* background-color: rgb(159, 250, 84); */
+  /* background-color: rgb(255, 222, 95); */
+}
+.footer{
+  min-height: 50px;
+  background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+
+  /* background-color: rgb(0, 255, 47); */
+}
+
+
+.footer {
+  background: linear-gradient(45deg, #fc4f55 0%, #ff9a9e 99%, #ff9a9e 100%);
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer__section {
+  flex: 1;
+  min-width: 250px;
+  padding: 15px;
+}
+
+.footer__title {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: bounce 2s infinite;
+}
+
+.footer__links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer__links li {
+  /* margin: 10px 0; */
+}
+
+.footer__links a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.footer__links a:hover {
+  transform: scale(1.1) rotate(5deg);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.social-icon {
+  font-size: 2rem;
+  color: white;
+  transition: all 0.3s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon:hover {
+  transform: translateY(-10px) rotate(360deg);
+}
+
+.footer__bottom {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  animation: colorChange 5s infinite;
+}
+
+.floating-emoji {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: float 5s infinite ease-in-out;
+  opacity: 0.7;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-20px);}
+  60% {transform: translateY(-10px);}
+}
+
+@keyframes float {
+  0% {transform: translateY(0) rotate(0deg);}
+  50% {transform: translateY(-20px) rotate(180deg);}
+  100% {transform: translateY(0) rotate(360deg);}
+}
+
+@keyframes colorChange {
+  0% {color: white;}
+  25% {color: #ffecf1;}
+  50% {color: #ffe0e9;}
+  75% {color: #ffd6e2;}
+  100% {color: white;}
+}
+
+/* Додамо плаваючі емодзі */
+.emoji-1 {top: 10%; left: 5%; animation-delay: 0s;}
+.emoji-2 {top: 30%; right: 10%; animation-delay: 1s;}
+.emoji-3 {bottom: 20%; left: 15%; animation-delay: 2s;}
+.emoji-4 {bottom: 40%; right: 20%; animation-delay: 3s;}
+.emoji-5 {top: 60%; left: 25%; animation-delay: 4s;}
